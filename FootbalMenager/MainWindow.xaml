@@ -1,0 +1,53 @@
+﻿<Window x:Class="FootbalMenager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Football Menager" Height="400" Width="650" Background="Gray">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.6*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.15*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Name:" FontSize="15" Padding="30 10 0 0" />
+            <TextBox x:Name="firstName_tbx" BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="0" Padding="2"  FontSize="13" Margin="4" PreviewMouseLeftButtonDown="MouseDown_firstName_tbx" Background="LightSeaGreen"  />
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Surename:" FontSize="15" Padding="30 10 0 0"/>
+            <TextBox x:Name="lastName_tbx" BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1" Padding="2" FontSize="13" Margin="4" PreviewMouseLeftButtonDown="MouseDown_lastName_tbx" Background="LightSeaGreen"  />
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Age:" FontSize="15" Padding="30 10 0 0"/>
+            <ComboBox x:Name="age_cb" BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="2" Padding="2" FontSize="13" Margin="3" SelectedIndex="0"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Weight:" FontSize="15" Padding="30 10 0 0"/>
+            <DockPanel VerticalAlignment="Center" Margin="2" Grid.Column="1" Grid.Row="3">
+                <TextBox Text="{Binding ElementName=weight_slider, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Center" Width="30" FontSize="10"/>
+                <Slider Width="80" Minimum="40" Maximum="150"  TickFrequency="1" IsSnapToTickEnabled="True" Name="weight_slider" ValueChanged="weight_slider_ValueChanged" />
+            </DockPanel>
+            <Button x:Name="add_btn" Grid.Row="6" Background="LightGreen" Content="Add" Margin="10 10 10 0" Grid.ColumnSpan="2" FontSize="15" Click="Add_btn_Click"/>
+            <Button x:Name="delete_btn" Grid.Row="7" Background="LightCoral" Content="Delate" Margin="10,10,10,0" Grid.ColumnSpan="2" FontSize="15" Click="Delete_btn_Click"/>
+            <Button x:Name="modify_btn" Grid.Row="8" Background="LightBlue" Content="Modify" Margin="10 10 10 17" Grid.ColumnSpan="2" FontSize="15" Click="Modify_btn_Click"/>
+
+        </Grid>
+        <ListBox Grid.Column="1" x:Name="playersList_lb" SelectionChanged="SelectionChanged_lb" Background="LightGray" >
+        </ListBox>
+    </Grid>
+
+</Window>
